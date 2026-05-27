@@ -20,6 +20,16 @@ build-options:
     CARGO_HOME: /run/build/wayshot/cargo
 
 modules:
+  - name: wl-clipboard
+    buildsystem: meson
+    config-opts:
+      - -Dfishcompletiondir=no
+    sources:
+      - type: git
+        url: https://github.com/bugaevc/wl-clipboard.git
+        tag: v2.2.1
+        commit: 3eb912c274042cd5deed6b478b39908a12f37498
+
   - name: wayshot
     buildsystem: simple
     build-commands:
@@ -31,6 +41,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/gutopardini/wayshot.git
-        tag: v0.1.2
-        commit: 484138d7f0650d7e587e9ed816e257fb4fc5898c
+        tag: v0.1.3
+        commit: 136cabbe9965f87f04fc77fc69a8f993e4000923
       - cargo-sources.json
