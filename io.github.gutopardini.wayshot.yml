@@ -20,12 +20,14 @@ build-options:
 
 modules:
   - name: wl-clipboard
-    buildsystem: autotools
+    buildsystem: meson
+    config-opts:
+      - -Dfishcompletiondir=no
     sources:
       - type: git
         url: https://github.com/bugaevc/wl-clipboard.git
         tag: v2.2.1
-        commit: a679f1782299d63860a6713e795674c100789091
+        commit: 3eb912c274042cd5deed6b478b39908a12f37498
 
   - name: wayshot
     buildsystem: simple
@@ -33,7 +35,7 @@ modules:
       - type: git
         url: https://github.com/gutopardini/wayshot.git
         tag: v0.1.6
-        commit: 848b4d17eab4a59f3d88037a4fd0c0df59b6fb55
+        commit: 0530f9726dde69048dbf2c4b65d28c6a507895c0
       - cargo-sources.json
     build-commands:
       - cargo build --release --locked
