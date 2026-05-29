@@ -3,7 +3,6 @@ runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
 command: wayshot
-rename-icon: wayshot-icon
 
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
@@ -32,18 +31,18 @@ modules:
 
   - name: wayshot
     buildsystem: simple
-    build-commands:
-      - cargo build --release --locked
-      - install -Dm755 target/release/wayshot -t /app/bin/
-      - install -Dm644 LICENSE -t /app/share/licenses/${FLATPAK_ID}/
-      - install -Dm644 data/${FLATPAK_ID}.desktop -t /app/share/applications/
-      - install -Dm644 data/${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
-      - install -Dm644 assets/icons/wayshot-icon.svg -t /app/share/icons/hicolor/scalable/apps/
-      - install -Dm644 assets/app-icons/256x256/apps/${FLATPAK_ID}.png -t /app/share/icons/hicolor/256x256/apps/
-      - install -Dm644 assets/app-icons/512x512/apps/${FLATPAK_ID}.png -t /app/share/icons/hicolor/512x512/apps/
     sources:
       - type: git
         url: https://github.com/gutopardini/wayshot.git
-        tag: v0.1.5
-        commit: c9e2f2eecba95a65c3c0ffb46e46c882abf4ce69
+        tag: v0.1.6
+        commit: 0530f9726dde69048dbf2c4b65d28c6a507895c0
       - cargo-sources.json
+    build-commands:
+      - cargo build --release --locked
+      - install -Dm755 target/release/wayshot /app/bin/wayshot
+      - install -Dm644 LICENSE /app/share/licenses/io.github.gutopardini.wayshot/LICENSE
+      - install -Dm644 data/io.github.gutopardini.wayshot.desktop /app/share/applications/io.github.gutopardini.wayshot.desktop
+      - install -Dm644 data/io.github.gutopardini.wayshot.metainfo.xml /app/share/metainfo/io.github.gutopardini.wayshot.metainfo.xml
+      - install -Dm644 assets/icons/wayshot-icon.svg /app/share/icons/hicolor/scalable/apps/io.github.gutopardini.wayshot.svg
+      - install -Dm644 assets/app-icons/256x256/apps/io.github.gutopardini.wayshot.png /app/share/icons/hicolor/256x256/apps/io.github.gutopardini.wayshot.png
+      - install -Dm644 assets/app-icons/512x512/apps/io.github.gutopardini.wayshot.png /app/share/icons/hicolor/512x512/apps/io.github.gutopardini.wayshot.png
